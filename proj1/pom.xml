@@ -21,7 +21,27 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+protected Response getToken(RequestSpecification requestSpecification) {
+        requestSpecification.header("Content-Type", "application/json");
+        AuthBody authBody = new AuthBody();
+        authBody.setV("1.0");
+        authBody.setRid("1234");
+        authBody.setC(settingC());
+        requestSpecification.body(authBody);
+        response = requestSpecification.post("/iam/jwt/token/signedJWT");
+        System.out.println("test");
+        return response;
+    }
 
+    public C settingC() {
+        C c = new C();
+        c.setAid("4zyzcv4u3rb");
+        c.setAsk("7qkPziy_4C1udNh5slxO3ml0U425di0cY65W");
+        c.setR("/FicoAnalyticCloud");
+        c.setCt("oauth2");
+        c.setCst("client_credentials");
+        return c;
+    }
 
     <dependency>
       <groupId>org.testng</groupId>
