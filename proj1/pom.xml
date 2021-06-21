@@ -21,27 +21,94 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-protected Response getToken(RequestSpecification requestSpecification) {
-        requestSpecification.header("Content-Type", "application/json");
-        AuthBody authBody = new AuthBody();
-        authBody.setV("1.0");
-        authBody.setRid("1234");
-        authBody.setC(settingC());
-        requestSpecification.body(authBody);
-        response = requestSpecification.post("/iam/jwt/token/signedJWT");
-        System.out.println("test");
-        return response;
+package models;
+
+public class AuthBody {
+
+    private String v;
+
+    private String rid;
+
+    private C c;
+
+    public void setV(String v) {
+        this.v = v;
     }
 
-    public C settingC() {
-        C c = new C();
-        c.setAid("4zyzcv4u3rb");
-        c.setAsk("7qkPziy_4C1udNh5slxO3ml0U425di0cY65W");
-        c.setR("/FicoAnalyticCloud");
-        c.setCt("oauth2");
-        c.setCst("client_credentials");
-        return c;
+    public String getV() {
+        return this.v;
     }
+
+    public void setRid(String rid) {
+        this.rid = rid;
+    }
+
+    public String getRid() {
+        return this.rid;
+    }
+
+    public void setC(C c) {
+        this.c = c;
+    }
+
+    public C getC() {
+        return this.c;
+
+    }
+}
+public class C {
+    private String aid;
+
+    private String ask;
+
+    private String r;
+
+    private String ct;
+
+    private String cst;
+
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
+
+    public String getAid() {
+        return this.aid;
+    }
+
+    public void setAsk(String ask) {
+        this.ask = ask;
+    }
+
+    public String getAsk() {
+        return this.ask;
+    }
+
+    public void setR(String r) {
+        this.r = r;
+    }
+
+    public String getR() {
+        return this.r;
+    }
+
+    public void setCt(String ct) {
+        this.ct = ct;
+    }
+
+    public String getCt() {
+        return this.ct;
+    }
+
+    public void setCst(String cst) {
+        this.cst = cst;
+    }
+
+    public String getCst() {
+        return this.cst;
+    }
+}
+
+
 
     <dependency>
       <groupId>org.testng</groupId>
